@@ -17,7 +17,8 @@ http method: **[POST]**
 ```
 {
     username: 'andrew',
-    password: 'allen'
+    password: 'allen',
+    is_land_owner: true
 }
 ```
 
