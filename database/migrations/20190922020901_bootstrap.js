@@ -5,7 +5,7 @@ exports.up = function (knex) {
             tbl.increments()
             tbl.string('username', 128).notNullable().unique()
             tbl.string('password', 128).notNullable()
-            tbl.boolean('is_land_owner').notNullable();
+            tbl.boolean('is_land_owner').notNullable()
             tbl.integer('reserve_id')
             tbl.date('reserve_date_start')
             tbl.date('reserve_date_end')
