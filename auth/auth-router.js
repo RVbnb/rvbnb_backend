@@ -12,10 +12,10 @@ router.post('/register', (req, res) => {
 
     Users.add(user)
         .then(addedUser => {
-            res.status(201).json({ message: `User Created!`})
+            res.status(201).json(addedUser)
         })
         .catch(error => {
-            res.status(500).json({ message: `Couldn't connect to register service` })
+            res.status(500).json({ stat: 'err', msg: error.message})
         })
 })
 
