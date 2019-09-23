@@ -43,7 +43,7 @@ router.post('/login', loginBody, (req, res) => {
 function generateToken(user) {
     const payload = {
         username: user.username,
-        role: user.role
+        is_land_owner: user.is_land_owner
     };
 
     const options = {
