@@ -33,7 +33,7 @@ module.exports = {
     },
     pool: {
       afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
+        conn.query('PRAGMA foreign_keys = ON', done);
       }
     },
   },
