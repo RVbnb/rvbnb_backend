@@ -1,4 +1,4 @@
-Heroku App URL (need before each method url): **https://dashboard.heroku.com/apps/rvbnb**
+Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 
 ==================== LOGIN && REGISTER ENDPOINTS START HERE =======================
 
