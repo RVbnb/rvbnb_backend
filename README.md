@@ -23,6 +23,11 @@ http method: **[POST]**
 ```
 
 **Response** 201 (created)
+```
+{
+    message: `User created`
+}
+```
 
 
 =========================================================================
@@ -51,7 +56,7 @@ http method: **[POST]**
 
 ```
 {
-token: 'a super duper long jwt token'
+    token: 'a super duper long jwt token'
 }
 ```
 
