@@ -58,7 +58,8 @@ http method: **[POST]**
 
 ```
 {
-    token: 'a super duper long jwt token'
+    token: 'a super duper long jwt token',
+    is_land_owner: 1(true) / 0(false)
 }
 ```
 
