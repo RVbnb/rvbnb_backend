@@ -21,10 +21,10 @@ router.get('/:id', authenticate, (req, res) => {
 
     Listings.findById({ id })
         .then(listing => {
-            if(listing) {
+            if (listing) {
                 res.status(200).json(listing)
             } else {
-                res.status(500).json({ message: `Listing does not exist`})
+                res.status(500).json({ message: `Listing does not exist` })
             }
         })
         .catch(error => {
@@ -34,18 +34,62 @@ router.get('/:id', authenticate, (req, res) => {
 
 router.post('/', authenticate, (req, res) => {
     console.log(res.user)
-    if(res.user.is_land_owner) {
+    if (res.user.is_land_owner) {
         let listing = req.body
 
         Listings.add(listing)
             .then(response => {
-                res.status(201).json({ message: 'Listing created'})
+                res.status(201).json({ message: 'Listing created' })
             })
             .catch(error => {
-                res.status(500).json({ message: 'Error connect with server, Location might already exist'})
+                res.status(500).json({ message: 'Error connect with server, Location might already exist' })
             })
     } else {
-        res.status(401).json({ message: 'Logged in user has no access to POST'})
+        res.status(401).json({ message: 'Logged in user has no access' })
+    }
+})
+
+router.delete('/:id', authenticate, (req, res) => {
+    if (res.user.is_land_owner) {
+        const { id } = req.params
+
+        Listings.remove({ id })
+            .then(response => {
+                console.log(response)
+                if (response) {
+                    res.status(201).json({ message: 'Listing deleted' })
+                } else {
+                    res.status(500).json({ message: `Listing does not exist` })
+                }
+            })
+            .catch(error => {
+                res.status(500).json({ message: 'Error connect with server' })
+            })
+    } else {
+        res.status(401).json({ message: 'Logged in user has no access' })
+    }
+})
+
+router.put('/:id', authenticate, (req, res) => {
+
+    if (res.user.is_land_owner) {
+        const { id } = req.params
+        const listing = req.body
+
+        Listings.update({ id }, listing)
+            .then(response => {
+                if (response) {
+                    res.status(201).json({ message: 'Listing updated' })
+                } else {
+                    res.status(500).json({ message: `Listing does not exist` })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                res.status(500).json(error)
+            })
+    } else {
+        res.status(401).json({ message: 'Logged in user has no access' })
     }
 })
 

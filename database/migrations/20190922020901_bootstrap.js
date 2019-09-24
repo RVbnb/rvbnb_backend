@@ -6,9 +6,9 @@ exports.up = function (knex) {
             tbl.string('username', 128).notNullable().unique()
             tbl.string('password', 128).notNullable()
             tbl.boolean('is_land_owner').notNullable()
-            tbl.integer('reserve_id')
-            tbl.date('reserve_date_start')
-            tbl.date('reserve_date_end')
+            // tbl.integer('reserve_id')
+            // tbl.date('reserve_date_start')
+            // tbl.date('reserve_date_end')
         })
         .createTable('listings', tbl => {
             tbl.increments()
@@ -21,10 +21,16 @@ exports.up = function (knex) {
                 .onUpdate('CASCADE')
             tbl.string('location', 128).notNullable().unique()
             tbl.string('description', 255).notNullable()
-            tbl.boolean('reserved').notNullable()
             tbl.decimal('price_per_day', 8, 2).notNullable()
             tbl.string('photo').notNullable()
         })
+        // .createTable('reservations', tbl => {
+        //     tbl.increments()
+        //     //listing id
+        //     // user that reserved id
+        //     // date start
+        //     // date duration
+        // })
 };
 
 exports.down = function (knex) {
