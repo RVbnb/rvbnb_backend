@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
             if(response.length > 0){
                 next()
             } else {
-                res.status(400).json({ message: 'User not found'})
+                res.status(404).json({ message: 'User not found'})
             }
         })
         .catch(error => {

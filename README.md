@@ -59,7 +59,9 @@ http method: **[POST]**
 ```
 {
     token: 'a super duper long jwt token',
-    is_land_owner: 1(true) / 0(false)
+    id: 1,
+    username: 'andrew',
+    is_land_owner: 1(T) / 0(F)
 }
 ```
 
@@ -69,6 +71,14 @@ http method: **[POST]**
     "message": "Invalid Credentials"
 }
 ```
+
+404 (not found) **Example response**
+```
+{
+    "message": "User not found"
+}
+```
+
 ==================== LISTINGS ENDPOINTS START HERE =======================
 
 **Gets listings**
