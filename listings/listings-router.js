@@ -24,7 +24,7 @@ router.get('/:id', authenticate, (req, res) => {
             if (listing) {
                 res.status(200).json(listing)
             } else {
-                res.status(500).json({ message: `Listing does not exist` })
+                res.status(404).json({ message: `Listing does not exist` })
             }
         })
         .catch(error => {
@@ -57,9 +57,9 @@ router.delete('/:id', authenticate, (req, res) => {
             .then(response => {
                 console.log(response)
                 if (response) {
-                    res.status(201).json({ message: 'Listing deleted' })
+                    res.status(200).json({ message: 'Listing deleted' })
                 } else {
-                    res.status(500).json({ message: `Listing does not exist` })
+                    res.status(404).json({ message: `Listing does not exist` })
                 }
             })
             .catch(error => {
@@ -79,9 +79,9 @@ router.put('/:id', authenticate, (req, res) => {
         Listings.update({ id }, listing)
             .then(response => {
                 if (response) {
-                    res.status(201).json({ message: 'Listing updated' })
+                    res.status(200).json({ message: 'Listing updated' })
                 } else {
-                    res.status(500).json({ message: `Listing does not exist` })
+                    res.status(404).json({ message: `Listing does not exist` })
                 }
             })
             .catch(error => {
