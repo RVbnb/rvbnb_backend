@@ -6,11 +6,12 @@ const Users = require('../users/users-model')
 const secrets = require('../config/secrets')
 
 const loginBody = require('../middleware/login-body')
+const loginUserExist = require('../middleware/login-user-exist')
 
 const registerBody = require('../middleware/register-body')
-const userExist = require('../middleware/user-exist')
+const registerUserExist = require('../middleware/register-user-exist')
 
-router.post('/register', registerBody, userExist, (req, res) => {
+router.post('/register', registerBody, registerUserExist, (req, res) => {
     let user = req.body
     const hash = bcrypt.hashSync(user.password, 10)
     user.password = hash;
@@ -24,16 +25,15 @@ router.post('/register', registerBody, userExist, (req, res) => {
         })
 })
 
-router.post('/login', loginBody, (req, res) => {
+router.post('/login', loginBody, loginUserExist, (req, res) => {
     let { username, password } = req.body;
 
     Users.findBy({ username })
         .first()
         .then(user => {
-            console.log(user.is_land_owner)
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user)
-                res.status(200).json({ token,  username: user.username, is_land_owner: user.is_land_owner });
+                res.status(200).json({ token, id: user.id, username: user.username, is_land_owner: user.is_land_owner});
             } else {
                 res.status(401).json({ message: 'Invalid Credentials' });
             }

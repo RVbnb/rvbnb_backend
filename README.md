@@ -11,8 +11,8 @@ http method: **[POST]**
 
 | name     | type   | required | description                       | 
 | -------- | ------ | -------- | --------------------------------- |
-| username | String | Yes      | Must be unique/ Must be < 128 char|
-| password | String | Yes      | Must be < 128 char                |
+| username | String | Yes      | Must be unique/ Must be < 24 char|
+| password | String | Yes      | Must be < 24 char                |
 | is_land_owner | Boolean | Yes | role of the user                 |
 
 **Example**
