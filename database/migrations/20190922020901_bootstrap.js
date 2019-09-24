@@ -21,6 +21,7 @@ exports.up = function (knex) {
                 .onUpdate('CASCADE')
             tbl.string('location', 128).notNullable().unique()
             tbl.string('description', 255).notNullable()
+            tbl.boolean('reserved').notNullable()
             tbl.decimal('price_per_day', 8, 2).notNullable()
             tbl.string('photo').notNullable()
         })

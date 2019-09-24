@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
             if (error) {
                 res.status(401).json({ message: 'Invalid Credentials' })
             } else {
-                res.user = { username: actualToken.username }
+                res.user = { username: actualToken.username, is_land_owner: actualToken.is_land_owner }
                 next()
             }
         })
