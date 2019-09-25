@@ -118,23 +118,34 @@ http method: **[GET]**
 
 =========================================================================
 
-**Gets a specific listing**
+**Gets a specific listing and returns reservations of specific listing**
+**If a RV Owner requests this endpoint they are only given reservations tied to them**
+**A Land Owner will get all reservations tied to the listing**
 method url: **/api/listings/:id**
 
 http method: **[GET]**
 
 **Response** 200 (ok)
 ```
-[
-    {
-        "id": 1,
+{
+    "listing": {
+        "id": 6,
         "owner_id": 1,
-        "location": "my street 7",
+        "location": "my street 1",
         "description": "some desc",
-        "price_per_day": 19.99,
+        "price_per_day": 20,
         "photo": "a photo url"
-    }
-]
+    },
+    "reservations": [
+        {
+            "id": 33,
+            "listing_id": 6,
+            "user_id": 1,
+            "reserve_date_start": "01/15/2019",
+            "reserve_date_end": "01/20/2019"
+        }
+    ]
+}
 ```
 
 404 (not found) **Example response**
@@ -155,7 +166,6 @@ http method: **[POST]**
 
 | name     | type   | required |
 | -------- | ------ | -------- |
-| owner_id | integer | Yes      |
 | location | string | Yes (Unique)      |
 | description | String | Yes      |
 | price_per_day | decimal | Yes      |
@@ -164,7 +174,6 @@ http method: **[POST]**
 **Example**
 ```
 {
-	"owner_id": 1,
 	"location": "my street 5",
 	"description": "some desc",
 	"price_per_day": 19.99,
@@ -218,28 +227,24 @@ http method: **[DELETE]**
 =========================================================================
 
 **Updates a listing**
+**Does not need entire object, only the key: value that is being updated**
 method url: **/api/listings/:id**
 
 http method: **[PUT]**
 
 **Body**
 
-| name     | type   | required |
-| -------- | ------ | -------- |
-| owner_id | integer | Yes      |
-| location | string | Yes (Unique)      |
-| description | String | Yes      |
-| price_per_day | decimal | Yes      |
-| photo | String | No      | (Still in the works)
+| name          | type    |
+| ------------- | ------- |
+| location      | string  |
+| description   | String  |
+| price_per_day | decimal |
+| photo         | String  |
 
 **Example**
 ```
 {
-	"owner_id": 1,
-	"location": "my street 5",
-	"description": "some desc updated!",
-	"price_per_day": 19.99,
-	"photo": "a photo url"
+	"price_per_day": 19.99
 }
 ```
 
