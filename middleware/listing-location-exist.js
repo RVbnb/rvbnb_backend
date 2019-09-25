@@ -1,14 +1,14 @@
-const Users = require('../users/users-model')
+const Listings = require('../listings/listings-model')
 
 module.exports = (req, res, next) => {
-    const { username } = req.body
+    const { location } = req.body
 
-    Users.findBy({ username })
+    Listings.findBy({ location })
         .then(response => {
             if(response.length > 0){
-                next()
+                res.status(400).json({ message: 'Location Already Exists'})
             } else {
-                res.status(404).json({ message: 'User not found'})
+                next()
             }
         })
         .catch(error => {

@@ -210,9 +210,16 @@ http method: **[POST]**
 }
 ```
 
+400 (location is no unique) **Example response**
+```
+{
+    message: 'Location Already Exists'
+}
+```
+
 =========================================================================
 
-**Deletes a listing**
+**Deletes a listing and all reservations tied to the listing**
 method url: **/api/listings/:id**
 
 http method: **[DELETE]**
@@ -280,5 +287,150 @@ http method: **[PUT]**
 ```
 {
     message: 'Logged in user has no access'
+}
+```
+
+=========================================================================
+
+**Gets all reservations**
+**Only Rv Owners can request this end point, they get all the reservations tied to their id**
+**See '/api/listings/:id/reservations' for Land Owners**
+method url: **/api/listings/all/reservations**
+
+http method: **[GET]**
+
+**Response** 200 (ok)
+```
+[
+    {
+        "id": 36,
+        "listing_id": 6,
+        "user_id": 2,
+        "reserve_date_start": "01/01/2019",
+        "reserve_date_end": "01/03/2019"
+    },
+    {
+        "id": 37,
+        "listing_id": 5,
+        "user_id": 2,
+        "reserve_date_start": "01/20/2019",
+        "reserve_date_end": "01/26/2019"
+    }
+]
+```
+
+401 (Unauthorized) **Example response**
+```
+{
+    message: 'Land Owners cannot have reservations'
+}
+```
+
+=========================================================================
+
+**Gets all reservations of a specific listing**
+**Land Owners get all reservations on the listing**
+**Rv Owners get the reservation(s) tied to their id**
+method url: **/api/listings/:id/reservations**
+
+http method: **[GET]**
+
+**Response** 200 (ok)
+```
+[
+    {
+        "id": 33,
+        "listing_id": 6,
+        "user_id": 1,
+        "reserve_date_start": "01/15/2019",
+        "reserve_date_end": "01/20/2019"
+    },
+    {
+        "id": 35,
+        "listing_id": 6,
+        "user_id": 1,
+        "reserve_date_start": "01/13/2019",
+        "reserve_date_end": "01/22/2019"
+    },
+    {
+        "id": 36,
+        "listing_id": 6,
+        "user_id": 2,
+        "reserve_date_start": "01/01/2019",
+        "reserve_date_end": "01/03/2019"
+    }
+]
+```
+
+404 (Not Found) **Example response**
+```
+{
+    message: `Listing does not exist`
+}
+```
+
+=========================================================================
+
+**Posting a reservation to a listing**
+**Land Owners cannot POST reservations**
+method url: **/api/listings/:id/reservations**
+
+http method: **[POST]**
+
+**Body**
+
+| name     | type   | required |
+| -------- | ------ | -------- |
+| reserve_date_start | string | Yes (mm/dd/yyyy) |
+| reserve_date_end | String | Yes (mm/dd/yyyy) |
+
+**Example**
+```
+{
+	"reserve_date_start": "01/15/2019",
+    "reserve_date_end": "01/17/2019"
+}
+```
+
+**Response** 201 (created)
+
+```
+{
+    "message": "Reservation created"
+}
+```
+
+401 (Unauthorized) **Example response**
+```
+{
+    message: 'Land owners cannot make reservations'
+}
+```
+
+400 (date conflicts) **Example response**
+```
+{
+    message: 'Conflicting reservations'
+}
+```
+
+=========================================================================
+
+**Deletes a specific reservation**
+method url: **/api/listings/reservations/:id**
+
+http method: **[DELETE]**
+
+**Response** 200 (ok)
+```
+{
+    message: 'Listing deleted' 
+}
+```
+
+404 (not found) **Example response**
+```
+{
+    message: `Reservation does not exist`
 }
 ```

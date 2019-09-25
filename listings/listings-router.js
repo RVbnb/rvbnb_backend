@@ -9,8 +9,13 @@ const Listings = require('./listings-model')
 const Reservations = require('../reservations/reservations-model')
 
 const authenticate = require('../middleware/authenticate')
+
 const isAvailable = require('../middleware/is-available')
+const reservationExists = require('../middleware/reservation-exist')
+
 const updateBody = require('../middleware/update-body')
+const locationExists = require('../middleware/listing-location-exist')
+const listingExists = require('../middleware/listing-exist')
 
 router.get('/', authenticate, (req, res) => {
     Listings.find()
@@ -56,7 +61,7 @@ router.get('/:id', authenticate, (req, res) => {
         })
 })
 
-router.post('/', authenticate, (req, res) => {
+router.post('/', authenticate, locationExists, (req, res) => {
     console.log(res.user)
     if (res.user.is_land_owner) {
         let listing = req.body
@@ -67,7 +72,7 @@ router.post('/', authenticate, (req, res) => {
                 res.status(201).json({ message: 'Listing created' })
             })
             .catch(error => {
-                res.status(500).json({ message: 'Error connect with server, Location might already exist' })
+                res.status(500).json({ message: 'Error connect with server' })
             })
     } else {
         res.status(401).json({ message: 'Logged in user has no access' })
@@ -128,7 +133,23 @@ router.put('/:id', authenticate, updateBody, (req, res) => {
     }
 })
 
-router.get('/:id/reservations', authenticate, (req, res) => {
+router.get('/all/reservations', authenticate, (req, res) => {
+    console.log(res.user.is_land_owner)
+    if(!res.user.is_land_owner) {
+        Reservations.findByUserId(res.user.id)
+            .then(response => {
+                res.status(200).json(response)
+            })
+            .catch(error => {
+                console.log(error)
+                res.status(500).json(error)
+            })
+    } else {
+        res.status(401).json({ message: 'Land Owners cannot have reservations'})
+    }
+})
+
+router.get('/:id/reservations', authenticate, listingExists, (req, res) => {
     if(res.user.is_land_owner){
         Reservations.findByListingId(req.params.id)
             .then(response => {
@@ -151,7 +172,8 @@ router.get('/:id/reservations', authenticate, (req, res) => {
 })
 
 router.post('/:id/reservations', authenticate, isAvailable, (req, res) => {
-    let reservation = req.body
+    if(!res.user.is_land_owner) {
+        let reservation = req.body
     reservation.listing_id = Number(req.params.id)
     reservation.user_id = res.user.id
     
@@ -163,14 +185,17 @@ router.post('/:id/reservations', authenticate, isAvailable, (req, res) => {
             console.log(error)
             res.status(500).json(error)
         })
+    } else {
+        res.status(401).json({ message: 'Land owners cannot make reservations'})
+    }
 })
 
-router.delete("/reservations/:id", authenticate, (req, res) => {
+router.delete("/reservations/:id", authenticate, reservationExists, (req, res) => {
     const { id } = req.params
 
     Reservations.remove({ id })
         .then(response => {
-            res.status(200).json(response)
+            res.status(200).json({ message: 'Reservation deleted'})
         })
         .catch(error => {
             console.log(error)
