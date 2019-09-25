@@ -87,6 +87,7 @@ router.delete('/:id', authenticate, (req, res) => {
                             res.status(200).json({ message: 'Listing and reservations deleted'})
                         })
                         .catch(error => {
+                            console.log(error)
                             res.status(500).json({ message: 'Error connecting with the server'})
                         })
                 } else {
@@ -153,7 +154,7 @@ router.post('/:id/reservations', authenticate, isAvailable, (req, res) => {
     
     Reservations.add(reservation)
         .then(response => {
-            res.status(201).json(response)
+            res.status(201).json({ message: 'Reservation created'})
         })
         .catch(error => {
             console.log(error)

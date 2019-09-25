@@ -138,11 +138,25 @@ http method: **[GET]**
     },
     "reservations": [
         {
-            "id": 33,
-            "listing_id": 6,
+            "id": 2,
+            "listing_id": 1,
             "user_id": 1,
-            "reserve_date_start": "01/15/2019",
-            "reserve_date_end": "01/20/2019"
+            "reserve_date_start": "2019-01-10T00:00:00.000Z",
+            "reserve_date_end": "2019-01-16T00:00:00.000Z"
+        },
+        {
+            "id": 3,
+            "listing_id": 1,
+            "user_id": 2,
+            "reserve_date_start": "2019-01-17T00:00:00.000Z",
+            "reserve_date_end": "2019-01-20T00:00:00.000Z"
+        },
+        {
+            "id": 4,
+            "listing_id": 1,
+            "user_id": 2,
+            "reserve_date_start": "2019-01-21T00:00:00.000Z",
+            "reserve_date_end": "2019-01-26T00:00:00.000Z"
         }
     ]
 }
