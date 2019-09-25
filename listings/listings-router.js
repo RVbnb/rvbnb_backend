@@ -1,10 +1,15 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken')
+const Moment = require('moment');
+const MomentRange = require('moment-range');
+
+const moment = MomentRange.extendMoment(Moment);
 
 const Listings = require('./listings-model')
+const Reservations = require('../reservations/reservations-model')
 
 const authenticate = require('../middleware/authenticate')
-const isLandOwner = require('../middleware/is-land-owner')
+const isAvailable = require('../middleware/is-available')
 
 router.get('/', authenticate, (req, res) => {
     Listings.find()
@@ -22,7 +27,26 @@ router.get('/:id', authenticate, (req, res) => {
     Listings.findById({ id })
         .then(listing => {
             if (listing) {
-                res.status(200).json(listing)
+                // res.status(200).json(listing)
+                if(res.user.is_land_owner){
+                    Reservations.findByListingId(req.params.id)
+                        .then(reservations => {
+                            res.status(200).json({listing, reservations})
+                        })
+                        .catch(error => {
+                            console.log(error)
+                            res.status(500).json(error)
+                        })
+                } else {
+                    Reservations.findByListingIdUser(req.params.id, res.user.id)
+                        .then(reservations => {
+                            res.status(200).json({listing, reservations})
+                        })
+                        .catch(error => {
+                            console.log(error)
+                            res.status(500).json(error)
+                        })
+                }
             } else {
                 res.status(404).json({ message: `Listing does not exist` })
             }
@@ -36,6 +60,7 @@ router.post('/', authenticate, (req, res) => {
     console.log(res.user)
     if (res.user.is_land_owner) {
         let listing = req.body
+        listing.owner_id = res.user.id
 
         Listings.add(listing)
             .then(response => {
@@ -57,7 +82,13 @@ router.delete('/:id', authenticate, (req, res) => {
             .then(response => {
                 console.log(response)
                 if (response) {
-                    res.status(200).json({ message: 'Listing deleted' })
+                    Reservations.removeByListingId({ id })
+                        .then(response => {
+                            res.status(200).json({ message: 'Listing and reservations deleted'})
+                        })
+                        .catch(error => {
+                            res.status(500).json({ message: 'Error connecting with the server'})
+                        })
                 } else {
                     res.status(404).json({ message: `Listing does not exist` })
                 }
@@ -91,6 +122,56 @@ router.put('/:id', authenticate, (req, res) => {
     } else {
         res.status(401).json({ message: 'Logged in user has no access' })
     }
+})
+
+router.get('/:id/reservations', authenticate, (req, res) => {
+    if(res.user.is_land_owner){
+        Reservations.findByListingId(req.params.id)
+            .then(response => {
+                res.status(200).json(response)
+            })
+            .catch(error => {
+                console.log(error)
+                res.status(500).json(error)
+            })
+    } else {
+        Reservations.findByListingIdUser(req.params.id, res.user.id)
+            .then(response => {
+                res.status(200).json(response)
+            })
+            .catch(error => {
+                console.log(error)
+                res.status(500).json(error)
+            })
+    }
+})
+
+router.post('/:id/reservations', authenticate, isAvailable, (req, res) => {
+    let reservation = req.body
+    reservation.listing_id = Number(req.params.id)
+    reservation.user_id = res.user.id
+    
+    Reservations.add(reservation)
+        .then(response => {
+            res.status(201).json(response)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json(error)
+        })
+})
+
+router.delete("/reservations/:id", authenticate, (req, res) => {
+    const { id } = req.params
+
+    Reservations.remove({ id })
+        .then(response => {
+            res.status(200).json(response)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json(error)
+        })
 })
 
 module.exports = router

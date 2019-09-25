@@ -21,17 +21,30 @@ exports.up = function (knex) {
             tbl.decimal('price_per_day', 8, 2).notNullable()
             tbl.string('photo').notNullable()
         })
-        // .createTable('reservations', tbl => {
-        //     tbl.increments()
-        //     //listing id
-        //     // user that reserved id
-        //     // date start
-        //     // date duration
-        // })
+        .createTable('reservations', tbl => {
+            tbl.increments()
+            tbl
+                .integer('listing_id')
+                .unsigned()
+                .references('id')
+                .inTable('listings')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE')
+            tbl
+                .integer('user_id')
+                .unsigned()
+                .references('id')
+                .inTable('users')
+                .onDelete('CASCADE')
+                .onUpdate('CASCADE')
+            tbl.date('reserve_date_start')
+            tbl.date('reserve_date_end')
+        })
 };
 
 exports.down = function (knex) {
     return knex.schema
         .dropTableIfExists('users')
         .dropTableIfExists('listings')
+        .dropTableIfExists('reservations')
 };

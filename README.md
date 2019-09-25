@@ -159,7 +159,7 @@ http method: **[POST]**
 | location | string | Yes (Unique)      |
 | description | String | Yes      |
 | price_per_day | decimal | Yes      |
-| photo | String | No      | (Still in the works)
+| photo | String | Yes (Doesn't actually do anything)      |
 
 **Example**
 ```

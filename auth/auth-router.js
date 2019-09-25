@@ -45,6 +45,7 @@ router.post('/login', loginBody, loginUserExist, (req, res) => {
 
 function generateToken(user) {
     const payload = {
+        id: user.id,
         username: user.username,
         is_land_owner: user.is_land_owner
     };
