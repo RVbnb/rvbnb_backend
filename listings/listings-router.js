@@ -84,7 +84,7 @@ router.delete('/:id', authenticate, (req, res) => {
                 console.log(response)
                 if (response) {
                     id = Number(id)
-                    Reservations.removeByListingId({ id })
+                    Reservations.removeByListingId(id)
                         .then(response => {
                             res.status(200).json({ message: 'Listing and reservations deleted'})
                         })
