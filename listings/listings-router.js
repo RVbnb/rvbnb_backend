@@ -10,6 +10,7 @@ const Reservations = require('../reservations/reservations-model')
 
 const authenticate = require('../middleware/authenticate')
 const isAvailable = require('../middleware/is-available')
+const updateBody = require('../middleware/update-body')
 
 router.get('/', authenticate, (req, res) => {
     Listings.find()
@@ -27,7 +28,6 @@ router.get('/:id', authenticate, (req, res) => {
     Listings.findById({ id })
         .then(listing => {
             if (listing) {
-                // res.status(200).json(listing)
                 if(res.user.is_land_owner){
                     Reservations.findByListingId(req.params.id)
                         .then(reservations => {
@@ -101,7 +101,7 @@ router.delete('/:id', authenticate, (req, res) => {
     }
 })
 
-router.put('/:id', authenticate, (req, res) => {
+router.put('/:id', authenticate, updateBody, (req, res) => {
 
     if (res.user.is_land_owner) {
         const { id } = req.params
