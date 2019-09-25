@@ -76,7 +76,7 @@ router.post('/', authenticate, (req, res) => {
 
 router.delete('/:id', authenticate, (req, res) => {
     if (res.user.is_land_owner) {
-        const { id } = req.params
+        let { id } = req.params
         console.log(id)
 
         Listings.remove({ id })
