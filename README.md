@@ -3,7 +3,7 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 ***
 
 LOGIN && REGISTER ENDPOINTS START HERE
-[/api/auth/register](#Register)
+[/api/auth/register](#register)
 
 ***
 
