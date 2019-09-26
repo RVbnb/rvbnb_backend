@@ -47,7 +47,7 @@ http method: **[POST]**
 }
 ```
 
-** [Back to top](#links-to-endpoints)
+* [Back to top](#links-to-endpoints)
 
 ***
 
