@@ -14,7 +14,7 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 * Get Reservation by Listing Id: .get() [/api/listings/:id/reservations](#get-reservation-by-listing-id)
 * Post Reservation: .post() [/api/listings/:id/reservations](#post-reservation)
 * Delete Reservation: .delete() [/api/listings/reservations/:id](#delete-reservation)
-* Upodate Reservation: .put() [api/listings/:listing_id/reservations/:id](#update-reservation)
+* Update Reservation: .put() [api/listings/:listing_id/reservations/:id](#update-reservation)
 
 ***
 
