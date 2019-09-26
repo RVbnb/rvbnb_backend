@@ -49,7 +49,7 @@ http method: **[POST]**
 }
 ```
 
-* [Back to top](../blob/master/README.md)
+* [Back to top](../master/README.md)
 
 ***
 
