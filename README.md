@@ -47,6 +47,8 @@ http method: **[POST]**
 }
 ```
 
+** [Back to top](#links-to-endpoints)
+
 ***
 
 # Login
