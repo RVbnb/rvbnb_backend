@@ -6,7 +6,7 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 * Register User: .post() [/api/auth/register](#register)
 * Login User: .post() [/api/auth/login](#login)
 * Get Listings: .get() [/api/listings](#get-listings)
-* Get Listing y Id: get() [/api/listings/:id](#get-specific-listing)
+* Get Listing by Id: get() [/api/listings/:id](#get-specific-listing)
 * Post Listings: .post() [/api/listings](#post-listing)
 * Delete Listing: .delete() [/api/listings/:id](#delete-listing)
 * Update Listing: .put() [/api/listings/:id](#update-listing)
