@@ -1,8 +1,12 @@
 Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 
-=== LOGIN && REGISTER ENDPOINTS START HERE ===
+***
 
-**Register a user**
+LOGIN && REGISTER ENDPOINTS START HERE
+
+***
+
+**Register a user
 
 method url: **/api/auth/register**
 
@@ -16,7 +20,7 @@ http method: **[POST]**
 | password | String | Yes      | Must be < 24 char                |
 | is_land_owner | Boolean | Yes | role of the user                 |
 
-**Example**
+**Example
 ```
 {
     username: 'andrew',
