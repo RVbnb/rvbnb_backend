@@ -1,16 +1,17 @@
 Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 
 ### Links to endponts
-* Register user: .post( [/api/auth/register] )(#register)
-* [/api/auth/login](#login)
-* [/api/listings](#get-listings)
-* [/api/listings/:id](#get-specific-listing)
-* [/api/listings](#post-listing)
-* [/api/listings/:id](#delete-listing)
-* [/api/listings/all/reservations](#get-reservations)
-* [/api/listings/:id/reservations](#get-reservation-by-listing-id)
-* [/api/listings/:id/reservations](#post-reservation)
-* [/api/listings/reservations/:id](#delete-reservation)
+* Register User: .post() [/api/auth/register](#register)
+* Login User: .post() [/api/auth/login](#login)
+* Get Listings: .get() [/api/listings](#get-listings)
+* Get Listing y Id: get() [/api/listings/:id](#get-specific-listing)
+* Post Listings: .post() [/api/listings](#post-listing)
+* Delete Listing: .delete() [/api/listings/:id](#delete-listing)
+* Update Listing: .put() [/api/listings/:id](#update-listing)
+* Get All Reservations: .get() [/api/listings/all/reservations](#get-reservations)
+* Get Reservation by Listing Id: .get() [/api/listings/:id/reservations](#get-reservation-by-listing-id)
+* Post Reservation: .post() [/api/listings/:id/reservations](#post-reservation)
+* Delete Reservation: .delete() [/api/listings/reservations/:id](#delete-reservation)
 
 ***
 
