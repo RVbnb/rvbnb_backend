@@ -131,6 +131,8 @@ http method: **[GET]**
 
 ***
 
+# Get Specific Listing
+
 **Gets a specific listing and returns reservations of specific listing**
 
 **If a RV Owner requests this endpoint they are only given reservations tied to them**
@@ -187,7 +189,7 @@ http method: **[GET]**
 
 ***
 
-**Posting a listing**
+# Post Listing
 
 method url: **/api/listings**
 
@@ -236,6 +238,8 @@ http method: **[POST]**
 
 ***
 
+# Delete Listing
+
 **Deletes a listing and all reservations tied to the listing**
 
 method url: **/api/listings/:id**
@@ -265,7 +269,7 @@ http method: **[DELETE]**
 
 ***
 
-**Updates a listing**
+# Update Listing
 
 **Does not need entire object, only the key: value that is being updated**
 
@@ -312,6 +316,8 @@ http method: **[PUT]**
 
 ***
 
+# Get Reservations
+
 **Gets all reservations**
 
 **Only Rv Owners can request this end point, they get all the reservations tied to their id**
@@ -350,6 +356,8 @@ http method: **[GET]**
 ```
 
 ***
+
+# Get Reservation By Listing Id
 
 **Gets all reservations of a specific listing**
 
@@ -397,6 +405,8 @@ http method: **[GET]**
 
 ***
 
+# Post Reservation
+
 **Posting a reservation to a listing**
 
 **Land Owners cannot POST reservations**
@@ -443,6 +453,9 @@ http method: **[POST]**
 ```
 
 ***
+
+# Delete Reservation
+
 **Deletes a specific reservation**
 
 method url: **/api/listings/reservations/:id**
