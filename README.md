@@ -89,6 +89,8 @@ http method: **[POST]**
 }
 ```
 
+***
+
 # Get Listings
 
 **Gets listings**
