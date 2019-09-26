@@ -454,8 +454,8 @@ http method: **[POST]**
 **Example**
 ```
 {
-	"reserve_date_start": "01/15/2019",
-    "reserve_date_end": "01/17/2019"
+    	"reserve_date_start": "01/15/2019",
+    	"reserve_date_end": "01/17/2019"
 }
 ```
 
@@ -528,7 +528,7 @@ http method: **[PUT]**
 ```
 {
 	"reserve_date_start": "01/02/2019",
-    "reserve_date_end": "01/05/2019"
+    	"reserve_date_end": "01/05/2019"
 }
 ```
 
