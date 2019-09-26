@@ -101,6 +101,8 @@ http method: **[POST]**
 }
 ```
 
+* [Back to top](#rv-bnb-backend-docs)
+
 ***
 
 # Get Listings
@@ -140,6 +142,8 @@ http method: **[GET]**
     }
 ]
 ```
+
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
@@ -199,6 +203,8 @@ http method: **[GET]**
 }
 ```
 
+* [Back to top](#rv-bnb-backend-docs)
+
 ***
 
 # Post Listing
@@ -248,6 +254,8 @@ http method: **[POST]**
 }
 ```
 
+* [Back to top](#rv-bnb-backend-docs)
+
 ***
 
 # Delete Listing
@@ -278,6 +286,8 @@ http method: **[DELETE]**
     message: 'Logged in user has no access'
 }
 ```
+
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
@@ -326,6 +336,8 @@ http method: **[PUT]**
 }
 ```
 
+* [Back to top](#rv-bnb-backend-docs)
+
 ***
 
 # Get Reservations
@@ -366,6 +378,8 @@ http method: **[GET]**
     message: 'Land Owners cannot have reservations'
 }
 ```
+
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
@@ -415,6 +429,8 @@ http method: **[GET]**
 }
 ```
 
+* [Back to top](#rv-bnb-backend-docs)
+
 ***
 
 # Post Reservation
@@ -463,6 +479,8 @@ http method: **[POST]**
     message: 'Conflicting reservations'
 }
 ```
+
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
