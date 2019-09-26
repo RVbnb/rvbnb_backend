@@ -1,6 +1,6 @@
 Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 
-### Links to endponts
+### Links to endpoints
 * Register User: .post() [/api/auth/register](#register)
 * Login User: .post() [/api/auth/login](#login)
 * Get Listings: .get() [/api/listings](#get-listings)
