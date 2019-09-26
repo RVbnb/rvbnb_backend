@@ -3,7 +3,6 @@ const Users = require('../users/users-model')
 module.exports = (req, res, next) => {
     const { username } = req.body
 
-    console.log(username)
     Users.findBy({ username})
         .then(response => {
             if(response.length > 0){

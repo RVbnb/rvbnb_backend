@@ -21,7 +21,8 @@ router.post('/register', registerBody, registerUserExist, (req, res) => {
             res.status(201).json({ message: `User created`})
         })
         .catch(error => {
-            res.status(500).json({ message: `Error connecting with server`})
+            console.log(error)
+            res.status(500).json({ message: `Error connecting with server`, error})
         })
 })
 

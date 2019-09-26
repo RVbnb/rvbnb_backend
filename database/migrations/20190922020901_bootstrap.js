@@ -44,7 +44,7 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
     return knex.schema
-        .dropTableIfExists('users')
-        .dropTableIfExists('listings')
         .dropTableIfExists('reservations')
+        .dropTableIfExists('listings')
+        .dropTableIfExists('users')
 };
