@@ -505,3 +505,5 @@ http method: **[DELETE]**
     message: `Reservation does not exist`
 }
 ```
+
+* [Back to top](#rv-bnb-backend-docs)
