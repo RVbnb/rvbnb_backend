@@ -1,3 +1,5 @@
+# RV BnB Backend Docs
+
 Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 
 ### Links to endpoints
@@ -47,7 +49,7 @@ http method: **[POST]**
 }
 ```
 
-* [Back to top](#links-to-endpoints)
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
