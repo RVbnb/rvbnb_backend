@@ -7,7 +7,7 @@ LOGIN && REGISTER ENDPOINTS START HERE
 
 ***
 
-#Register
+# Register
 
 method url: **/api/auth/register**
 
