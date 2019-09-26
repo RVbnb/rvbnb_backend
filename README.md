@@ -49,7 +49,7 @@ http method: **[POST]**
 }
 ```
 
-* [Back to top](../master/README.md)
+* [Back to top](#rv-bnb-backend-docs)
 
 ***
 
