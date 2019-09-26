@@ -3,6 +3,7 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 ==================== LOGIN && REGISTER ENDPOINTS START HERE =======================
 
 **Register a user**
+
 method url: **/api/auth/register**
 
 http method: **[POST]**
@@ -35,6 +36,7 @@ http method: **[POST]**
 =========================================================================
 
 **Login a user**
+
 method url: **/api/auth/login**
 
 http method: **[POST]**
@@ -82,6 +84,7 @@ http method: **[POST]**
 ==================== LISTINGS ENDPOINTS START HERE =======================
 
 **Gets listings**
+
 method url: **/api/listings**
 
 http method: **[GET]**
@@ -119,8 +122,11 @@ http method: **[GET]**
 =========================================================================
 
 **Gets a specific listing and returns reservations of specific listing**
+
 **If a RV Owner requests this endpoint they are only given reservations tied to them**
+
 **A Land Owner will get all reservations tied to the listing**
+
 method url: **/api/listings/:id**
 
 http method: **[GET]**
@@ -172,6 +178,7 @@ http method: **[GET]**
 =========================================================================
 
 **Posting a listing**
+
 method url: **/api/listings**
 
 http method: **[POST]**
@@ -220,6 +227,7 @@ http method: **[POST]**
 =========================================================================
 
 **Deletes a listing and all reservations tied to the listing**
+
 method url: **/api/listings/:id**
 
 http method: **[DELETE]**
@@ -248,7 +256,9 @@ http method: **[DELETE]**
 =========================================================================
 
 **Updates a listing**
+
 **Does not need entire object, only the key: value that is being updated**
+
 method url: **/api/listings/:id**
 
 http method: **[PUT]**
@@ -293,8 +303,11 @@ http method: **[PUT]**
 =========================================================================
 
 **Gets all reservations**
+
 **Only Rv Owners can request this end point, they get all the reservations tied to their id**
+
 **See '/api/listings/:id/reservations' for Land Owners**
+
 method url: **/api/listings/all/reservations**
 
 http method: **[GET]**
@@ -329,8 +342,11 @@ http method: **[GET]**
 =========================================================================
 
 **Gets all reservations of a specific listing**
+
 **Land Owners get all reservations on the listing**
+
 **Rv Owners get the reservation(s) tied to their id**
+
 method url: **/api/listings/:id/reservations**
 
 http method: **[GET]**
@@ -372,7 +388,9 @@ http method: **[GET]**
 =========================================================================
 
 **Posting a reservation to a listing**
+
 **Land Owners cannot POST reservations**
+
 method url: **/api/listings/:id/reservations**
 
 http method: **[POST]**
@@ -417,6 +435,7 @@ http method: **[POST]**
 =========================================================================
 
 **Deletes a specific reservation**
+
 method url: **/api/listings/reservations/:id**
 
 http method: **[DELETE]**
