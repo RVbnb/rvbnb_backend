@@ -127,7 +127,7 @@ http method: **[GET]**
 ]
 ```
 
-=========================================================================
+***
 
 **Gets a specific listing and returns reservations of specific listing**
 
@@ -183,7 +183,7 @@ http method: **[GET]**
 }
 ```
 
-=========================================================================
+***
 
 **Posting a listing**
 
@@ -232,7 +232,7 @@ http method: **[POST]**
 }
 ```
 
-=========================================================================
+***
 
 **Deletes a listing and all reservations tied to the listing**
 
@@ -261,7 +261,7 @@ http method: **[DELETE]**
 }
 ```
 
-=========================================================================
+***
 
 **Updates a listing**
 
@@ -308,7 +308,7 @@ http method: **[PUT]**
 }
 ```
 
-=========================================================================
+***
 
 **Gets all reservations**
 
@@ -347,7 +347,7 @@ http method: **[GET]**
 }
 ```
 
-=========================================================================
+***
 
 **Gets all reservations of a specific listing**
 
@@ -393,7 +393,7 @@ http method: **[GET]**
 }
 ```
 
-=========================================================================
+***
 
 **Posting a reservation to a listing**
 
@@ -440,8 +440,7 @@ http method: **[POST]**
 }
 ```
 
-=========================================================================
-
+***
 **Deletes a specific reservation**
 
 method url: **/api/listings/reservations/:id**
