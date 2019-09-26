@@ -12,6 +12,7 @@ const authenticate = require('../middleware/authenticate')
 
 const isAvailable = require('../middleware/is-available')
 const reservationExists = require('../middleware/reservation-exist')
+const isAvailableUpdate = require('../middleware/reservation-update')
 
 const updateBody = require('../middleware/update-body')
 const locationExists = require('../middleware/listing-location-exist')
@@ -201,6 +202,28 @@ router.delete("/reservations/:id", authenticate, reservationExists, (req, res) =
             console.log(error)
             res.status(500).json(error)
         })
+})
+
+router.put("/:listing_id/reservations/:id", authenticate, isAvailableUpdate, (req, res) => {
+    console.log(req.params)
+    const { id }= req.params
+    let reservation = req.body
+    reservation.listing_id = Number(req.params.listing_id)
+    reservation.user_id = res.user.id
+
+    Reservations.update({ id }, reservation)
+        .then(response => {
+            if (response) {
+                res.status(200).json({ message: 'Reservation updated' })
+            } else {
+                res.status(404).json({ message: `Reservation does not exist` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json(error)
+        })
+
 })
 
 module.exports = router

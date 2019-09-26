@@ -7,7 +7,8 @@ module.exports = {
     findByListingIdUser,
     findByUserId,
     remove,
-    removeByListingId
+    removeByListingId,
+    update
 }
 
 function add(reservation) {
@@ -36,4 +37,8 @@ function remove(id) {
 
 function removeByListingId(id) {
     return db('reservations').where('listing_id', id).delete()
+}
+
+function update(id, reservation) {
+    return db('reservations').where(id).update(reservation)
 }

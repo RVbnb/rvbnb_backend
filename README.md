@@ -14,6 +14,7 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 * Get Reservation by Listing Id: .get() [/api/listings/:id/reservations](#get-reservation-by-listing-id)
 * Post Reservation: .post() [/api/listings/:id/reservations](#post-reservation)
 * Delete Reservation: .delete() [/api/listings/reservations/:id](#delete-reservation)
+* Upodate Reservation: .put() [api/listings/:listing_id/reservations/:id](#update-reservation)
 
 ***
 
@@ -507,3 +508,51 @@ http method: **[DELETE]**
 ```
 
 * [Back to top](#rv-bnb-backend-docs)
+
+***
+
+# Update Reservation
+
+method url: **api/listings/:listing_id/reservations/:id**
+
+http method: **[PUT]**
+
+**Body**
+
+| name     | type   | required |
+| -------- | ------ | -------- |
+| reserve_date_start | string | Yes (mm/dd/yyyy) |
+| reserve_date_end | String | Yes (mm/dd/yyyy) |
+
+**Example**
+```
+{
+	"reserve_date_start": "01/02/2019",
+    "reserve_date_end": "01/05/2019"
+}
+```
+
+**Response** 200 (ok)
+```
+{
+    message: 'Reservation updated' 
+}
+```
+
+404 (not found) **Example response**
+```
+{
+    message: `Reservation does not exist`
+}
+```
+
+400 **Example response**
+```
+{
+    message: 'Conflicting reservations'
+}
+```
+
+* [Back to top](#rv-bnb-backend-docs)
+
+***
