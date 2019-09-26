@@ -4,6 +4,13 @@ Heroku App URL (need before each method url): **https://rvbnb.herokuapp.com**
 * [/api/auth/register](#register)
 * [/api/auth/login](#login)
 * [/api/listings](#get-listings)
+* [/api/listings/:id](#get-specific-listing)
+* [/api/listings](#post-listing)
+* [/api/listings/:id](#delete-listing)
+* [/api/listings/:id/reservations](#get-reservations)
+* [/api/listings/:id/reservations](#get-reservation-by-listing-id)
+* [/api/listings/:id/reservations](#post-reservation)
+* [/api/listings/reservations/:id](#delete-reservation)
 
 ***
 
